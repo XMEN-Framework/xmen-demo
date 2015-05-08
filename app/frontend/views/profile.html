@@ -1,0 +1,12 @@
+{% include 'partials/header.html' %}
+
+<h2>Profile</h2>
+
+<hr/>
+
+<p>Welcome {{user.first_name}}!</p>
+
+<p><b>ID:</b> {{user._id}}</p>
+<p><b>Email:</b> {{user.email}}</p>
+
+{% include 'partials/footer.html' %}

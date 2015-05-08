@@ -4,7 +4,6 @@ XMEN = Any-Frontend Mongo Express NodeJS
 
 Website: [xmen.io](http://xmen.io)
 
-
 ## Installation
 
 XMEN requires MongoDB to be installed and NodeJS.

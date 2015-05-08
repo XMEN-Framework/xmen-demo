@@ -21,6 +21,7 @@ module.exports = {
         'CONFIG_ROOT': rootPath + '/config',
         'APP_ROOT': rootPath + '/app',
         'PUBLIC_ROOT': rootPath + '/public',
+        'SESSION_TIMEOUT': 60000 * 60, // 1 hour
         'app': {
             'name': 'XMEN Framework - DEVELOPMENT',
             'url': 'http://localhost:8000'
@@ -38,6 +39,7 @@ module.exports = {
         'CONFIG_ROOT': rootPath + '/config',
         'APP_ROOT': rootPath + '/app',
         'PUBLIC_ROOT': rootPath + '/public',
+        'SESSION_TIMEOUT': 60000 * 60, // 1 hour 
         'app': {
             'name': 'XMEN Framework',
             'url': 'http://xmen.io'

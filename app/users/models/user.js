@@ -5,9 +5,7 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    crypto = require('crypto'),
-    _ = require('underscore');
-
+    crypto = require('crypto');
 
 var UserSchema = new Schema({
     first_name: {
@@ -22,6 +20,13 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+
+    groups: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Group'
+        }
+    ],
 
     //Access
     last_login: {

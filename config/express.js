@@ -29,7 +29,7 @@ module.exports = function( app, config, passport ) {
 		level: 9
 	}));
 
-	//Set the public root to server static files
+	//Set the public root to serve static files
 	app.use(express.static(config.PUBLIC_ROOT));
 
 	//Don't user logged for test env
@@ -74,7 +74,10 @@ module.exports = function( app, config, passport ) {
 			collection: 'sessions'
 		}),
 		resave: true,
-		saveUninitialized: true
+		saveUninitialized: true,
+		cookie: {
+			maxAge: config.SESSION_TIMEOUT //1 hour
+		}
 	}));
 
 	app.use(flash());
@@ -83,7 +86,7 @@ module.exports = function( app, config, passport ) {
 	app.use(passport.initialize());
 	app.use(passport.session());
 
-	//Assume "not found" in the rror msgs is a 404.
+	//Assume "not found" in the error msgs is a 404.
 	app.use(function( err, req, res, next ) {
 		//Treat as 404
 		if ( err.message.indexOf('not found') ) return next();

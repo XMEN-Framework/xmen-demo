@@ -61,6 +61,33 @@ exports.authCallback = function( req, res, next ) {
 
 
 /**
+ * Register user
+ */
+exports.register = function( req, res ) {
+
+	var body = {
+		first_name: req.body.first_name,
+		last_name: req.body.last_name,
+		email: req.body.email,
+		password: req.body.password
+	};
+
+	var user = new User(body);
+
+	user.save(function( err ) {
+		if ( err ) {
+			console.log(err);
+			return res.jsonp(1);
+		}
+
+		req.logIn(user, function( err ) {
+			return res.redirect('/profile');
+		});
+	});
+};
+
+
+/**
 * Login redirect
 */
 exports.login = function( req, res ) {
@@ -70,7 +97,7 @@ exports.login = function( req, res ) {
 	req.user.last_login = new Date();
 	req.user.save();
 
-	res.jsonp(req.user);
+	res.redirect('/profile');
 };
 
 
@@ -80,7 +107,7 @@ exports.login = function( req, res ) {
 exports.logout = function( req, res ) {
 	//Logout of the app.
 	req.logout();
-	res.jsonp(1);
+	res.redirect('/');
 };
 
 

@@ -30,9 +30,9 @@ module.exports = function( passport, config ) {
 	function( email, password, next ) {
 
 		User.findOne({ email: email })
-			.select('hashed_password provider salt email')
-			.populate('image_asset')
+			.select('hashed_password salt')
 			.exec( function( err, user ) {
+
 				//Error, just return
 				if ( err ) return next(err);
 
